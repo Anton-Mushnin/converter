@@ -12,7 +12,7 @@ function SelectCurrency({
   };
 
   return (
-    <div>
+    <>
       <select value={value} onChange={handleSelect}>
         {tickers.map((ticker) => (
           <option key={ticker} value={ticker}>
@@ -27,7 +27,7 @@ function SelectCurrency({
           </option>
         ))}
       </select>
-    </div>
+    </>
   );
 }
 

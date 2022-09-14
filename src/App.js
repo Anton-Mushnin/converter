@@ -3,42 +3,43 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import clm from 'country-locale-map';
 import getSymbols from './store/actions/symbols';
+import getRate from './store/actions/rates';
 // import logo from './logo.svg';
 import './App.css';
 import SelectCurrency from './components/SelectCurrency';
 
 function App() {
   const dispatch = useDispatch();
+  const rate = useSelector((state) => state.rates.rate);
   const tickers = useSelector((state) => state.symbols.tickers);
   const symbols = useSelector((state) => state.symbols.symbols);
   const loading = useSelector((state) => state.symbols.loading);
   const error = useSelector((state) => state.symbols.error);
-  // const [selected, setSelected] = useState('USD');
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('EUR');
-
-  // const fullNames = useRef();
-  // const success = useSelector((state) => state.symbols.success);
+  const [baseAmount, setBaseAmount] = useState('');
 
   useEffect(() => {
-    // console.log(navigator.language.slice(-2));
-    // console.log(Intl.DateTimeFormat().resolvedOptions().locale);
-    setFrom(clm.getCurrencyByAlpha2(navigator.language.slice(-2)));
-    // console.log(clm.getCurrencyByAlpha2(navigator.language.slice(-2)));
+    setFrom(clm.getCurrencyByAlpha2(Intl.DateTimeFormat().resolvedOptions().locale.slice(-2)));
+    // setFrom(clm.getCurrencyByAlpha2(navigator.language.slice(-2)));
     if (!tickers.length) {
       dispatch(getSymbols());
-      console.log('fetch');
     }
   }, []);
 
-  const handleSelectFrom = (value) => {
-    setFrom(value);
-  };
-  const handleSelectTo = (value) => {
-    setTo(value);
-  };
-  const reverse = () => {
+  useEffect(() => {
+    // fetch('https://api.apilayer.com/exchangerates_data/symbols');
+    dispatch(getRate(from, to));
+  }, [from, to]);
 
+  const reverse = () => {
+    const toCopy = to;
+    setTo(from);
+    setFrom(toCopy);
+  };
+
+  const changeBase = (e) => {
+    setBaseAmount(e.target.value);
   };
 
   return (
@@ -48,9 +49,12 @@ function App() {
       {error && !loading && <p>{error}</p>}
       {tickers.length && (
         <>
-          <SelectCurrency value={from} onChange={handleSelectFrom} tickers={tickers} symbols={symbols} />
-          <SelectCurrency value={to} onChange={handleSelectTo} tickers={tickers} symbols={symbols} />
+          <SelectCurrency value={from} onChange={setFrom} tickers={tickers} symbols={symbols} />
+          <SelectCurrency value={to} onChange={setTo} tickers={tickers} symbols={symbols} />
           <button type="button" onClick={reverse}>Reverse</button>
+          <input type="number" value={baseAmount} onChange={changeBase} />
+          {rate && <p>{rate[to]}</p>}
+          {/* <div>{rate}</div> */}
         </>
       )}
 
