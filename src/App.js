@@ -16,7 +16,10 @@ function App() {
   // const success = useSelector((state) => state.symbols.success);
 
   useEffect(() => {
-    dispatch(getSymbols());
+    if (!tickers.length) {
+      dispatch(getSymbols());
+      console.log('fetch');
+    }
   }, []);
 
   const handleSelect = (e) => {
