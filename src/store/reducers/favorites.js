@@ -1,5 +1,3 @@
-/* eslint-disable no-case-declarations */
-/* eslint-disable max-len */
 import * as type from '../types';
 
 const initialState = {
@@ -21,7 +19,9 @@ export default function favorites(state = initialState, action) {
       return {
         ...state,
         reload: false,
-        pairs: state.pairs.filter(({ base, target }) => !(base === action.base && target === action.target)),
+        pairs: state.pairs.filter(
+          ({ base, target }) => (base + target !== action.base + action.target),
+        ),
       };
 
     case type.GET_FAV_RATES_REQUESTED:
@@ -30,13 +30,6 @@ export default function favorites(state = initialState, action) {
         loading: true,
       };
     case type.GET_FAV_RATES_SUCCESS:
-      console.log('qq', action);
-      // const newPairs = state.pairs.map((pair) => ({
-      //   ...pair,
-      //   yesterday: action.yesterday[pair.target] / action.yesterday[pair.base],
-      //   today: action.today[pair.target] / action.today[pair.base],
-      // }));
-      // console.log('ww', newPairs);
       return {
         ...state,
         loading: false,

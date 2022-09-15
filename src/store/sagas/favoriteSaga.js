@@ -8,7 +8,6 @@ function getApi(action) {
   startDate.setDate(endDate.getDate() - 1);
   const startDateString = startDate.toISOString().slice(0, 10);
   const endDateString = endDate.toISOString().slice(0, 10);
-  console.log(startDateString, endDateString);
 
   const apiUrl = `https://api.apilayer.com/exchangerates_data/timeseries?symbols=${action.target}&base=${DEFAULT_BASE}&start_date=${startDateString}&end_date=${endDateString}`;
   const myHeaders = new Headers();
@@ -22,18 +21,17 @@ function getApi(action) {
 
   return fetch(apiUrl, requestOptions)
     .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      return { yesterday: data.rates[startDateString], today: data.rates[endDateString] };
-    })
+    .then((data) => ({
+      yesterday: data.rates[startDateString],
+      today: data.rates[endDateString],
+    }))
     .catch((error) => { throw error; });
 }
 
 function* fetchRate(action) {
   try {
-    const rates = yield call(getApi, action);
-    console.log(rates);
-    yield put({ type: 'GET_FAV_RATES_SUCCESS', yesterday: rates.yesterday, today: rates.today });
+    const { yesterday, today } = yield call(getApi, action);
+    yield put({ type: 'GET_FAV_RATES_SUCCESS', yesterday, today });
   } catch (e) {
     yield put({ type: 'GET_FAV_RATES_FAILED', message: e.message });
   }

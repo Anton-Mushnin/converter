@@ -8,12 +8,12 @@ function FavoritesList({ onClick }) {
   const dispatch = useDispatch();
   useEffect(() => {
     if (!reload) { return; }
-    const tickers = [];
+    const tickers = {};
     pairs.forEach((pair) => {
-      tickers.push(pair.base);
-      tickers.push(pair.target);
+      tickers[pair.base] = true;
+      tickers[pair.target] = true;
     });
-    dispatch(getRates(tickers));
+    dispatch(getRates(Object.keys(tickers)));
   }, [pairs]);
 
   const handleClick = (e) => {
