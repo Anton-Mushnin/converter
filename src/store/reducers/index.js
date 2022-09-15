@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux';
 import symbols from './symbols';
 import rates from './rates';
+import favorites from './favorites';
 
 const rootReducer = combineReducers({
   symbols,
   rates,
-  // favs,
+  favorites,
 });
 
 export default rootReducer;

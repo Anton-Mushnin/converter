@@ -8,6 +8,8 @@ import getRate from './store/actions/rates';
 // import logo from './logo.svg';
 import './App.css';
 import SelectCurrency from './components/SelectCurrency';
+import FavoritesList from './components/FavoritesList';
+import FavoriteButton from './components/FavoriteButton';
 
 function App() {
   const dispatch = useDispatch();
@@ -16,13 +18,13 @@ function App() {
   const symbols = useSelector((state) => state.symbols.symbols);
   const loading = useSelector((state) => state.rates.loading);
   const error = useSelector((state) => state.symbols.error);
-  const [from, setFrom] = useState('');
-  const [to, setTo] = useState('EUR');
+  const [base, setBase] = useState('');
+  const [target, setTarget] = useState('EUR');
   const [baseAmount, setBaseAmount] = useState('');
   const [targetAmount, setTargetAmount] = useState('');
 
   useEffect(() => {
-    setFrom(clm.getCurrencyByAlpha2(Intl.DateTimeFormat().resolvedOptions().locale.slice(-2)));
+    setBase(clm.getCurrencyByAlpha2(Intl.DateTimeFormat().resolvedOptions().locale.slice(-2)));
     // setFrom(clm.getCurrencyByAlpha2(navigator.language.slice(-2)));
     if (!tickers.length) {
       dispatch(getSymbols());
@@ -30,20 +32,20 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (from && to) {
-      dispatch(getRate(from, to));
+    if (base && target && base === 'QQ') {
+      dispatch(getRate(base, target));
     }
-  }, [from, to]);
+  }, [base, target]);
 
   const reverse = () => {
-    const toCopy = to;
-    setTo(from);
-    setFrom(toCopy);
+    const toCopy = target;
+    setTarget(base);
+    setBase(toCopy);
   };
 
   useEffect(() => {
     if (rate) {
-      setTargetAmount(baseAmount * rate[to]);
+      setTargetAmount(baseAmount * rate[target]);
     }
   }, [baseAmount, rate]);
 
@@ -59,14 +61,16 @@ function App() {
       {tickers.length && (
         <>
           {/* <Spinner /> */}
-          <SelectCurrency value={from} onChange={setFrom} tickers={tickers} symbols={symbols} />
-          <SelectCurrency value={to} onChange={setTo} tickers={tickers} symbols={symbols} />
+          <SelectCurrency value={base} onChange={setBase} tickers={tickers} symbols={symbols} />
+          <SelectCurrency value={target} onChange={setTarget} tickers={tickers} symbols={symbols} />
           <button type="button" onClick={reverse}>Reverse</button>
           <input type="number" value={baseAmount} onChange={changeBase} />
-          {rate && <p>{rate[to]}</p>}
+          {rate && <p>{rate[target]}</p>}
           <div>{targetAmount}</div>
+          <FavoriteButton base={base} target={target} />
         </>
       )}
+      <FavoritesList />
 
     </>
   );
