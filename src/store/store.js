@@ -12,7 +12,7 @@ const persistedState = localStorage.getItem('converterReduxState')
 const store = compose(
   applyMiddleware(sagaMiddleware),
   // eslint-disable-next-line no-underscore-dangle
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 )(createStore)(rootReducer, persistedState);
 
 store.subscribe(() => {

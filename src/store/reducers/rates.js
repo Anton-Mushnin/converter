@@ -12,9 +12,9 @@ export default function rates(state = initialState, action) {
       return {
         ...state,
         loading: true,
+        rate: null,
       };
     case type.GET_RATE_SUCCESS:
-      console.log('qq', action.rate.rates);
       return {
         ...state,
         loading: false,
