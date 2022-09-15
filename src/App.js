@@ -53,6 +53,10 @@ function App() {
     setBaseAmount(e.target.value);
   };
 
+  const favSelected = (newBase, newTarget) => {
+    setBase(newBase);
+    setTarget(newTarget);
+  };
   return (
     <>
       {/* {loading && <Spinner animation="grow">qq</Spinner>} */}
@@ -70,7 +74,7 @@ function App() {
           <FavoriteButton base={base} target={target} />
         </>
       )}
-      <FavoritesList />
+      <FavoritesList onClick={favSelected} />
 
     </>
   );
