@@ -16,13 +16,7 @@ function FavoriteButton({ base, target }) {
   }, [base, target, pairs]);
 
   const toggle = () => {
-    if (on) {
-      dispatch(removePair(base, target));
-      setOn(false);
-    } else {
-      dispatch(addPair(base, target));
-      setOn(true);
-    }
+    dispatch(on ? removePair(base, target) : addPair(base, target));
   };
 
   return (
