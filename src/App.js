@@ -1,22 +1,22 @@
 /* eslint-disable max-len */
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-// import Spinner from 'react-bootstrap/Spinner';
+import Spinner from 'react-bootstrap/Spinner';
 import clm from 'country-locale-map';
 import getSymbols from './store/actions/symbols';
 import getRate from './store/actions/rates';
-// import logo from './logo.svg';
 import './App.css';
 import SelectCurrency from './components/SelectCurrency';
 import FavoritesList from './components/FavoritesList';
 import FavoriteButton from './components/FavoriteButton';
+import ModalSelect from './components/ModalSelect';
 
 function App() {
   const dispatch = useDispatch();
   const rate = useSelector((state) => state.rates.rate);
   const tickers = useSelector((state) => state.symbols.tickers);
   const symbols = useSelector((state) => state.symbols.symbols);
-  const loading = useSelector((state) => state.rates.loading);
+  const loading = useSelector((state) => state.favorites.loading);
   const error = useSelector((state) => state.symbols.error);
   const [base, setBase] = useState('');
   const [target, setTarget] = useState('EUR');
@@ -59,7 +59,7 @@ function App() {
   };
   return (
     <>
-      {/* {loading && <Spinner animation="grow">qq</Spinner>} */}
+      {loading && <Spinner animation="grow">qq</Spinner>}
       {tickers.length === 0 && !loading && <p>No symbols available!</p>}
       {error && !loading && <p>{error}</p>}
       {tickers.length && (
@@ -72,6 +72,7 @@ function App() {
           {rate && <p>{rate[target]}</p>}
           <div>{targetAmount}</div>
           <FavoriteButton base={base} target={target} />
+          <ModalSelect tickers={tickers} symbols={symbols} onChange={setBase} />
         </>
       )}
       <FavoritesList onClick={favSelected} />
