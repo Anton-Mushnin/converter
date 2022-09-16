@@ -1,16 +1,21 @@
 .ticker {
   color: #5A8BAE;
-  font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 500;
   font-size: 20px;
 }
 
 .currency {
-  height: 20px;
+  font-size: 16px;
+  color: #FBBC05;
+}
+
+.active {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 700;
+}
+
+.row {
   font-family: 'Work Sans';
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
-  color: #FBBC05;
 }

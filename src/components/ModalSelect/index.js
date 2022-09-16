@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+/* eslint-disable max-len */
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ListGroup from 'react-bootstrap/ListGroup';
 import styles from './ModalSelect.module.css';
 
 function ModalSelect({
-  tickers, symbols, onChange,
+  tickers, symbols, onChange, value,
 }) {
   const [show, setShow] = useState(false);
 
@@ -17,6 +18,16 @@ function ModalSelect({
     setShow(false);
   };
 
+  const ref = React.createRef();
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.scrollIntoView({
+        block: 'center',
+      });
+    }
+  }, [ref]);
+
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
@@ -27,8 +38,8 @@ function ModalSelect({
         <Modal.Body>
           <ListGroup variant="flush">
             { tickers.map((ticker) => (
-              <ListGroup.Item key={ticker} onClick={clickHandler(ticker)}>
-                <div>
+              <ListGroup.Item ref={ticker === value ? ref : null} key={ticker} onClick={clickHandler(ticker)}>
+                <div className={ticker === value ? styles.active : styles.row}>
                   <div className={styles.ticker}>{ticker}</div>
                   <div className={styles.currency}>{symbols[ticker]}</div>
                 </div>

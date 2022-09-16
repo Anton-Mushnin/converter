@@ -72,7 +72,7 @@ function App() {
           {rate && <p>{rate[target]}</p>}
           <div>{targetAmount}</div>
           <FavoriteButton base={base} target={target} />
-          <ModalSelect tickers={tickers} symbols={symbols} onChange={setBase} />
+          <ModalSelect tickers={tickers} symbols={symbols} onChange={setBase} value={base} />
         </>
       )}
       <FavoritesList onClick={favSelected} />
