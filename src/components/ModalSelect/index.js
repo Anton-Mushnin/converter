@@ -34,13 +34,14 @@ function ModalSelect({
         select
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} class="modal fade w-auto">
         <Modal.Body>
-          <ListGroup variant="flush">
+          <ListGroup class="list-group list-group-flush w-auto" variant="flush">
             { tickers.map((ticker) => (
-              <ListGroup.Item ref={ticker === value ? ref : null} key={ticker} onClick={clickHandler(ticker)}>
+              <ListGroup.Item class="list-group-item w-auto" ref={ticker === value ? ref : null} key={ticker} onClick={clickHandler(ticker)}>
                 <div className={ticker === value ? styles.active : styles.row}>
                   <div className={styles.ticker}>{ticker}</div>
+                  <br />
                   <div className={styles.currency}>{symbols[ticker]}</div>
                 </div>
               </ListGroup.Item>
