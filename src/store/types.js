@@ -9,6 +9,9 @@ export const GET_SYMBOLS_FAILED = 'GET_SYMBOLS_FAILED';
 export const GET_RATE_REQUESTED = 'GET_RATE_REQUESTED';
 export const GET_RATE_SUCCESS = 'GET_RATE_SUCCESS';
 export const GET_RATE_FAILED = 'GET_RATE_FAILED';
+export const SET_BASE = 'SET_BASE';
+export const SET_TARGET = 'SET_TARGET';
+export const REVERSE = 'REVERSE';
 
 export const ADD_FAVORITE = 'ADD_FAVORITE';
 export const GET_FAV_RATES_REQUESTED = 'GET_FAV_RATES_REQUESTED';
