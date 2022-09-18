@@ -22,6 +22,8 @@
 
 .rateAndTrend {
   display: flex;
-  width: 125px;
+  width: 150px;
   justify-content: space-between;
+  color: #FBBC05;
+  letter-spacing: 0.08em;
 }

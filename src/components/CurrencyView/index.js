@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { useDispatch, useSelector } from 'react-redux';
 import ModalSelect from '../ModalSelect';
 import styles from './CurrencyView.module.css';
@@ -8,7 +7,6 @@ function CurrencyView({
   ticker, placeholder, onValueChange, value,
 }) {
   const symbols = useSelector((state) => state.symbols.symbols);
-  const tickers = useSelector((state) => state.symbols.tickers);
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -30,7 +28,12 @@ function CurrencyView({
           <div className={styles.ticker}>{ticker}</div>
           <div className={styles.currency}>{symbols[ticker]}</div>
         </div>
-        <ModalSelect className={styles.select} onChange={onTickerChange} tickers={tickers} symbols={symbols} value={ticker} />
+        <ModalSelect
+          className={styles.select}
+          onChange={onTickerChange}
+          symbols={symbols}
+          value={ticker}
+        />
       </div>
       <div className={styles.amountContainer}>
         {placeholder === '' && (

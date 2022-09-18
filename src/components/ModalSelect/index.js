@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
@@ -32,7 +31,6 @@ function ModalSelect({ symbols, onChange, value }) {
 
   return (
     <>
-      {/* <button className={styles.button} type="button" onClick={handleShow} /> */}
       <img
         className={styles.button}
         src="/images/choose.png"

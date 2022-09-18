@@ -2,11 +2,9 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect, useState } from 'react';
-// import { Spinner } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { setBase, setTarget } from '../../store/actions/rates';
 import styles from './FavoritesRow.module.css';
-// import 'bootstrap/dist/css/bootstrap.css';
 
 function FavoritesRow({ pair }) {
   const {

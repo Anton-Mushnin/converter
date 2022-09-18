@@ -7,18 +7,13 @@ import styles from './FavoriteButton.module.css';
 
 function FavoriteButton() {
   const pairs = useSelector((state) => state.favorites.pairs);
-  const base = useSelector((state) => state.rates.base);
-  const target = useSelector((state) => state.rates.target);
+  const { base, target } = useSelector((state) => state.rates);
 
   const [on, setOn] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (pairs.some((pair) => pair.base === base && pair.target === target)) {
-      setOn(true);
-    } else {
-      setOn(false);
-    }
+    setOn(pairs.some((pair) => pair.base === base && pair.target === target));
   }, [base, target, pairs]);
 
   const toggle = () => {

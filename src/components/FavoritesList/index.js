@@ -5,9 +5,9 @@ import FavoritesRow from '../FavoritesRow';
 import styles from './FavoritesList.module.css';
 
 function FavoritesList() {
-  const pairs = useSelector((state) => state.favorites.pairs);
-  const reload = useSelector((state) => state.favorites.reload);
+  const { pairs, reload } = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (!reload) { return; }
     const tickers = {};
