@@ -1,9 +1,14 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPair, removePair } from '../../store/actions/favorites';
 
-function FavoriteButton({ base, target }) {
+function FavoriteButton() {
   const pairs = useSelector((state) => state.favorites.pairs);
+  const base = useSelector((state) => state.rates.base);
+  const target = useSelector((state) => state.rates.target);
+
   const [on, setOn] = useState(false);
   const dispatch = useDispatch();
 
@@ -20,7 +25,7 @@ function FavoriteButton({ base, target }) {
   };
 
   return (
-    <button type="button" onClick={toggle}>{on ? 'on' : 'off'}</button>
+    <img src={on ? '/images/bookmark.png' : '/images/bookmark_off.png'} alt="fav" onClick={toggle} />
   );
 }
 

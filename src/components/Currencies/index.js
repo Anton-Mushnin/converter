@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import FavoriteButton from '../FavoriteButton';
 import CurrencyView from '../CurrencyView';
 import { getRate } from '../../store/actions/rates';
-import ReverseButton from '../ReverseButton';
 import styles from './Currencies.module.css';
+import ButtonsBlock from '../ButtonsBlock';
 
 function Currencies() {
   const dispatch = useDispatch();
@@ -32,11 +31,11 @@ function Currencies() {
     <div className="container">
       <div className={styles.label}>From</div>
       <CurrencyView ticker={base} currency={symbols[base]} onValueChange={setBaseAmount} placeholder="enter amount" />
+      <ButtonsBlock />
       <div className={styles.label}>To</div>
       <CurrencyView ticker={target} currency={symbols[target]} placeholder="" value={targetAmount} />
-      <ReverseButton />
       {rate && <p>{rate[target]}</p>}
-      <FavoriteButton base={base} target={target} />
+
     </div>
   );
 }
