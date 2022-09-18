@@ -21,7 +21,7 @@ function FavoritesList() {
   return (
     <div className={styles.container}>
       {pairs.map((pair) => (
-        <FavoritesRow pair={pair} />
+        <FavoritesRow key={pair.base + pair.target} pair={pair} />
       ))}
     </div>
   );

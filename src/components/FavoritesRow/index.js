@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect, useState } from 'react';
@@ -13,9 +14,11 @@ function FavoritesRow({ pair }) {
   const dispatch = useDispatch();
 
   const [formattedRate, setFormattedRate] = useState('');
-  const handleClick = (e) => {
-    dispatch(setBase(e.target.id.slice(0, 3)));
-    dispatch(setTarget(e.target.id.slice(-3)));
+  const handleClick = () => {
+    dispatch(setBase(base));
+    dispatch(setTarget(target));
+    // dispatch(setBase(e.target.id.slice(0, 3)));
+    // dispatch(setTarget(e.target.id.slice(-3)));
   };
 
   useEffect(() => {
@@ -27,14 +30,13 @@ function FavoritesRow({ pair }) {
   }, [today]);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={handleClick}>
       <div className={styles.tickers}>{`${base} - ${target}`}</div>
       <div className={styles.rateAndTrend}>
         <div className={styles.trend}>
           <img
             className={styles.trendImg}
             id={`${pair.base}${pair.target}`}
-            onClick={handleClick}
             src={today > yesterday ? '/images/up.png' : '/images/down.png'}
             alt="trend"
           />
