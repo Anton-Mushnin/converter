@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 0.08em;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #5A8BAE;
+  font-variant: small-caps;
+}
+
+.sign {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}

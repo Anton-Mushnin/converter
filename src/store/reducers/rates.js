@@ -12,7 +12,6 @@ const initialState = {
 };
 
 export default function rates(state = initialState, action) {
-  console.log(action);
   switch (action.type) {
     case type.SET_BASE: {
       return {

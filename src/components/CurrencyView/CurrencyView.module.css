@@ -46,15 +46,10 @@ textarea:focus, input:focus{
 
 input[type="number"] {
   border-style: none;
-
-  
 }
 
 input[type="text"] {
   border-style: none;
-  
-
-
 } 
 
 input {

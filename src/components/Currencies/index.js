@@ -4,6 +4,7 @@ import CurrencyView from '../CurrencyView';
 import { getRate } from '../../store/actions/rates';
 import styles from './Currencies.module.css';
 import ButtonsBlock from '../ButtonsBlock';
+import Rate from '../Rate';
 
 function Currencies() {
   const dispatch = useDispatch();
@@ -43,8 +44,7 @@ function Currencies() {
       <ButtonsBlock />
       <div className={styles.label}>To</div>
       <CurrencyView ticker={target} currency={symbols[target]} placeholder="" value={targetAmount} />
-      {rate && <p>{rate[target]}</p>}
-
+      <Rate />
     </div>
   );
 }

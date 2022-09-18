@@ -31,7 +31,6 @@ function FavoritesRow({ pair }) {
 
   return (
     <div className={styles.container} onClick={handleClick}>
-      {/* <div className="spinner-border-sm" /> */}
       <div className={styles.tickers}>{`${base} - ${target}`}</div>
       <div className={styles.rateAndTrend}>
         {today && (

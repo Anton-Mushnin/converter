@@ -19,11 +19,14 @@ function FavoritesList() {
   }, [pairs]);
 
   return (
-    <div className={styles.container}>
-      {pairs.map((pair) => (
-        <FavoritesRow key={pair.base + pair.target} pair={pair} />
-      ))}
-    </div>
+    <>
+      <img className={styles.label} src="/images/bookmark.png" alt="bookmarks" />
+      <div className={styles.container}>
+        {pairs.map((pair) => (
+          <FavoritesRow key={pair.base + pair.target} pair={pair} />
+        ))}
+      </div>
+    </>
   );
 }
 
