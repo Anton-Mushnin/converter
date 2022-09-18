@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 5px;
+  background-color: white;
+  margin-top: 10px;
+  border-radius: 12px;
+}
+
+.ticker {
+  font-size: 20px;
+  color: #5A8BAE;
+  padding: 5px 5px;
+  display: inline-block;
+}
+
+.currency {
+  display: inline-block;
+  font-size: 20px;
+  color: #FBBC05;
+  padding: 5px 5px;
+}
+
+.currencyContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 5px 5px;
+}
+
+.select {
+  margin-left: 100px;
+}
+
+.name {
+  display: flex;
+}
+
+input {
+  border-style: none;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.amountContainer {
+
+}
