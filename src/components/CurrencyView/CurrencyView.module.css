@@ -1,31 +1,35 @@
 .container {
   display: flex;
   flex-direction: column;
-  padding: 5px 5px;
+  justify-content: space-between;
+  padding: 12px 27px 52px 33px;
   background-color: white;
-  margin-top: 10px;
   border-radius: 12px;
+  height: 164px;
+  letter-spacing: 0.08em;
 }
 
 .ticker {
   font-size: 20px;
   color: #5A8BAE;
-  padding: 5px 5px;
   display: inline-block;
+  
 }
 
 .currency {
   display: inline-block;
   font-size: 20px;
   color: #FBBC05;
-  padding: 5px 5px;
+  margin-left: 12px;
+
 }
 
 .currencyContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 5px 5px;
+  border-bottom: 1px solid #BBBBBB;
+  ;
 }
 
 .select {
@@ -36,11 +40,17 @@
   display: flex;
 }
 
-input {
+textarea:focus, input:focus{
+  outline: none;
+}
+
+input[type="number"] {
   border-style: none;
   font-size: 12px;
   font-weight: 300;
+  
 }
+
 
 .amountContainer {
 

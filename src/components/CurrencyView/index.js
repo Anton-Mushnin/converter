@@ -33,7 +33,7 @@ function CurrencyView({
         <ModalSelect className={styles.select} onChange={onTickerChange} tickers={tickers} symbols={symbols} value={ticker} />
       </div>
       <div className={styles.amountContainer}>
-        {placeholder === '' && <input type="number" value={value} />}
+        {placeholder === '' && <input type="number" readOnly value={value} />}
         {placeholder !== '' && <input type="number" placeholder={placeholder} onChange={handleChange} />}
       </div>
     </div>
