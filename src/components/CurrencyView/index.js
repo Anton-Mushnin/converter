@@ -17,9 +17,9 @@ function CurrencyView({
 
   const onTickerChange = (selected) => {
     if (placeholder) {
-      dispatch(setTarget(selected));
-    } else {
       dispatch(setBase(selected));
+    } else {
+      dispatch(setTarget(selected));
     }
   };
 
