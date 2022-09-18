@@ -1,12 +1,9 @@
-import clm from 'country-locale-map';
 import * as type from '../types';
-
-const base = clm.getCurrencyByAlpha2(Intl.DateTimeFormat().resolvedOptions().locale.slice(-2));
 
 const initialState = {
   rate: null,
-  base,
-  target: 'qq',
+  base: '',
+  target: '',
   loading: false,
   error: null,
 };
