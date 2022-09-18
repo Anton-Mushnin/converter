@@ -33,12 +33,21 @@ function ModalSelect({ symbols, onChange, value }) {
   return (
     <>
       {/* <button className={styles.button} type="button" onClick={handleShow} /> */}
-      <img src="/images/choose.png" onClick={handleShow} alt="choose" />
+      <img
+        className={styles.button}
+        src="/images/choose.png"
+        onClick={handleShow}
+        alt="choose"
+      />
       <Modal show={show} onHide={handleClose}>
         <Modal.Body>
           <ListGroup variant="flush">
             { tickers.map((ticker) => (
-              <ListGroup.Item ref={ticker === value ? ref : null} key={ticker} onClick={clickHandler(ticker)}>
+              <ListGroup.Item
+                ref={ticker === value ? ref : null}
+                key={ticker}
+                onClick={clickHandler(ticker)}
+              >
                 <div className={ticker === value ? styles.active : styles.row}>
                   <div className={styles.ticker}>{ticker}</div>
                   <br />

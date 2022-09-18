@@ -5,3 +5,7 @@
   letter-spacing: 0.08em;
   margin-bottom: 4px;
 }
+
+.container {
+  overflow: hidden;
+}

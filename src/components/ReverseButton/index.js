@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useDispatch } from 'react-redux';
 import { reverse } from '../../store/actions/rates';
+import styles from './ReverseButton.module.css';
 
 function ReverseButton() {
   const dispatch = useDispatch();
@@ -9,7 +10,12 @@ function ReverseButton() {
     dispatch(reverse());
   };
   return (
-    <img src="/images/reverse.png" alt="reverse" onClick={handleClick} />
+    <img
+      src="/images/reverse.png"
+      className={styles.button}
+      alt="reverse"
+      onClick={handleClick}
+    />
   );
 }
 

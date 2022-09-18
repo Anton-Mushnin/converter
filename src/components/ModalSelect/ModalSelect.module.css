@@ -27,11 +27,11 @@
 
 }
 
-img {
+.button {
   width: 24px;
   height: 24px;
-
 }
+
 
 .button {
   background-image: url("/public/images/choose.png");
@@ -41,3 +41,5 @@ img {
   border-style: none;
   box-sizing: content-box;
 }
+
+

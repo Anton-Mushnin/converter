@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPair, removePair } from '../../store/actions/favorites';
+import styles from './FavoriteButton.module.css';
 
 function FavoriteButton() {
   const pairs = useSelector((state) => state.favorites.pairs);
@@ -25,7 +26,12 @@ function FavoriteButton() {
   };
 
   return (
-    <img src={on ? '/images/bookmark.png' : '/images/bookmark_off.png'} alt="fav" onClick={toggle} />
+    <img
+      className={styles.button}
+      src={on ? '/images/bookmark.png' : '/images/bookmark_off.png'}
+      alt="fav"
+      onClick={toggle}
+    />
   );
 }
 

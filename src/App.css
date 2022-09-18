@@ -33,6 +33,8 @@ body {
 }
 .modal {
   width: auto !important;
+  border-radius: 12px !important;
+  /* height: 430px !important; */
 }
 
 @keyframes App-logo-spin {

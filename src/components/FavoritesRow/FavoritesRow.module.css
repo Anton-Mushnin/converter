@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  background-color: white;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  height: 38px;
+  margin-bottom: 13px;
+  padding: 0px 19px;
+}
+
+.trendImg {
+  width: 12px;
+  height: 8px;
+}
+
+.tickers {
+  color: #5A8BAE;
+  font-size: 20px;
+  letter-spacing: 0.08em;
+}
+
+.rateAndTrend {
+  display: flex;
+  width: 125px;
+  justify-content: space-between;
+}

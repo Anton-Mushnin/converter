@@ -28,7 +28,7 @@ function Currencies() {
   }, [base, target]);
 
   return (
-    <div className="container">
+    <div className={styles.container}>
       <div className={styles.label}>From</div>
       <CurrencyView ticker={base} currency={symbols[base]} onValueChange={setBaseAmount} placeholder="enter amount" />
       <ButtonsBlock />
