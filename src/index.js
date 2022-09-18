@@ -3,9 +3,10 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import store from './store/store';
-import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
+import './App.css';
 
 // import reportWebVitals from './reportWebVitals';
 

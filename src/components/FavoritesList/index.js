@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getRates } from '../../store/actions/favorites';
+import { setBase, setTarget } from '../../store/actions/rates';
 
-function FavoritesList({ onClick }) {
+function FavoritesList() {
   const pairs = useSelector((state) => state.favorites.pairs);
   const reload = useSelector((state) => state.favorites.reload);
   const dispatch = useDispatch();
@@ -17,7 +18,8 @@ function FavoritesList({ onClick }) {
   }, [pairs]);
 
   const handleClick = (e) => {
-    onClick(e.target.id.slice(0, 3), e.target.id.slice(-3));
+    dispatch(setBase(e.target.id.slice(0, 3)));
+    dispatch(setTarget(e.target.id.slice(-3)));
   };
 
   return (

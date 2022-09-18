@@ -1,14 +1,16 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
+import { useSelector } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
 import ListGroup from 'react-bootstrap/ListGroup';
 import styles from './ModalSelect.module.css';
 
-function ModalSelect({
-  tickers, symbols, onChange, value,
-}) {
+function ModalSelect({ symbols, onChange, value }) {
   const [show, setShow] = useState(false);
+  const tickers = useSelector((state) => state.symbols.tickers);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -30,15 +32,13 @@ function ModalSelect({
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        select
-      </Button>
-
-      <Modal show={show} onHide={handleClose} class="modal fade w-auto">
+      {/* <button className={styles.button} type="button" onClick={handleShow} /> */}
+      <img src="/images/choose.png" onClick={handleShow} alt="choose" />
+      <Modal show={show} onHide={handleClose}>
         <Modal.Body>
-          <ListGroup class="list-group list-group-flush w-auto" variant="flush">
+          <ListGroup variant="flush">
             { tickers.map((ticker) => (
-              <ListGroup.Item class="list-group-item w-auto" ref={ticker === value ? ref : null} key={ticker} onClick={clickHandler(ticker)}>
+              <ListGroup.Item ref={ticker === value ? ref : null} key={ticker} onClick={clickHandler(ticker)}>
                 <div className={ticker === value ? styles.active : styles.row}>
                   <div className={styles.ticker}>{ticker}</div>
                   <br />
