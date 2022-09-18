@@ -27,7 +27,7 @@
 .currencyContainer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: top;
   border-bottom: 1px solid #BBBBBB;
   ;
 }
@@ -46,12 +46,23 @@ textarea:focus, input:focus{
 
 input[type="number"] {
   border-style: none;
-  font-size: 12px;
-  font-weight: 300;
+
   
 }
 
+input[type="text"] {
+  border-style: none;
+  
 
-.amountContainer {
 
+} 
+
+input {
+  font-size: 24px;
+  font-weight: 300;
+  color: #474747;
+}
+input::placeholder {
+  font-size: 12px;
+  font-weight: 300;
 }

@@ -16,8 +16,17 @@ function Currencies() {
   const [targetAmount, setTargetAmount] = useState('');
 
   useEffect(() => {
-    if (rate) {
-      setTargetAmount(baseAmount * rate[target]);
+    if (rate[target] && baseAmount) {
+      const { locale } = Intl.NumberFormat().resolvedOptions();
+      const nf = new Intl.NumberFormat(locale, {
+        style: 'decimal',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
+      setTargetAmount(nf.format(baseAmount * rate[target]));
+      // setTargetAmount(baseAmount * rate[target]);
+    } else {
+      setTargetAmount('');
     }
   }, [baseAmount, rate, base, target]);
 
