@@ -1,0 +1,10 @@
+.title {
+  text-transform: uppercase;
+  color: #5A8BAE;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  margin-top: 32px;
+}

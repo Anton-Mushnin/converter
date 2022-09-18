@@ -7,6 +7,7 @@ import './App.css';
 import FavoritesList from './components/FavoritesList';
 import Currencies from './components/Currencies';
 import { setBase, setTarget } from './store/actions/rates';
+import Header from './components/Header';
 
 function App() {
   const dispatch = useDispatch();
@@ -66,6 +67,7 @@ function App() {
           <FavoriteButton base={base} target={target} />
         </>
       )} */}
+      <Header title="currency converter" />
       <Currencies />
       <FavoritesList />
 
