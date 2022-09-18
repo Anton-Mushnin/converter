@@ -9,15 +9,13 @@ import Rate from '../Rate';
 function Currencies() {
   const dispatch = useDispatch();
 
-  const base = useSelector((state) => state.rates.base);
-  const target = useSelector((state) => state.rates.target);
-  const rate = useSelector((state) => state.rates.rate);
+  const { base, target, rate } = useSelector((state) => state.rates);
   const symbols = useSelector((state) => state.symbols.symbols);
   const [baseAmount, setBaseAmount] = useState('');
   const [targetAmount, setTargetAmount] = useState('');
 
   useEffect(() => {
-    if (rate[target] && baseAmount) {
+    if (rate && baseAmount) {
       const { locale } = Intl.NumberFormat().resolvedOptions();
       const nf = new Intl.NumberFormat(locale, {
         style: 'decimal',
@@ -25,14 +23,13 @@ function Currencies() {
         maximumFractionDigits: 2,
       });
       setTargetAmount(nf.format(baseAmount * rate[target]));
-      // setTargetAmount(baseAmount * rate[target]);
     } else {
       setTargetAmount('');
     }
   }, [baseAmount, rate, base, target]);
 
   useEffect(() => {
-    if (base && target && base === 'QQ') {
+    if (base && target) {
       dispatch(getRate(base, target));
     }
   }, [base, target]);

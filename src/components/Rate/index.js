@@ -18,20 +18,33 @@ function Rate() {
   }, [base]);
 
   useEffect(() => {
-    const { locale } = Intl.NumberFormat().resolvedOptions();
-    const nf = new Intl.NumberFormat(locale, {
-      style: 'currency',
-      currency: target,
-    });
-    setTargetString(nf.format(rate[target]));
+    if (rate) {
+      const { locale } = Intl.NumberFormat().resolvedOptions();
+      let nf;
+      if (rate[target] > 1) {
+        nf = new Intl.NumberFormat(locale, {
+          style: 'currency',
+          currency: target,
+        });
+      } else {
+        nf = new Intl.NumberFormat(locale, {
+          style: 'currency',
+          currency: target,
+          minimumSignificantDigits: 2,
+          maximumSignificantDigits: 2,
+        });
+      }
+
+      setTargetString(nf.format(rate[target]));
+    }
   }, [target, rate]);
 
   return (
     <div className={styles.container}>
       <div>{baseString}</div>
       <div className={styles.sign}>=</div>
-      {rate[target] && <div>{targetString}</div>}
-      {!rate[target] && <div className="spinner-border spinner-border-sm" />}
+      {rate && <div>{targetString}</div>}
+      {!rate && <div className="spinner-border spinner-border-sm" />}
     </div>
   );
 }
