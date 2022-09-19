@@ -8,13 +8,15 @@ function Rate() {
   const [targetString, setTargetString] = useState('');
 
   useEffect(() => {
-    const { locale } = Intl.NumberFormat().resolvedOptions();
-    const nf = new Intl.NumberFormat(locale, {
-      style: 'currency',
-      currency: base,
-      maximumFractionDigits: 0,
-    });
-    setBaseString(nf.format(1));
+    if (base) {
+      const { locale } = Intl.NumberFormat().resolvedOptions();
+      const nf = new Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency: base,
+        maximumFractionDigits: 0,
+      });
+      setBaseString(nf.format(1));
+    }
   }, [base]);
 
   useEffect(() => {

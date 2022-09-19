@@ -3,6 +3,10 @@ body {
   background-color: #BBBBBB;
 }
 
+.spinner {
+  width: 100%;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -12,5 +16,11 @@ body {
 .modal {
   width: auto !important;
   border-radius: 12px !important;
-  /* height: 430px !important; */
+}
+
+.spinner-container {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 }

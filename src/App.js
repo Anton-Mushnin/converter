@@ -25,8 +25,17 @@ function App() {
   return (
     <>
       <Header title="currency converter" />
-      <Currencies />
-      <FavoritesList />
+      {!tickers.length && (
+        <div className="spinner-container">
+          <div className="spinner-grow spinner" />
+        </div>
+      )}
+      {tickers.length > 0 && (
+      <>
+        <Currencies />
+        <FavoritesList />
+      </>
+      )}
     </>
   );
 }
