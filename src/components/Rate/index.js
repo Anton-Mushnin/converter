@@ -27,6 +27,7 @@ function Rate() {
         nf = new Intl.NumberFormat(locale, {
           style: 'currency',
           currency: target,
+          minimumFractionDigits: 2,
         });
       } else {
         nf = new Intl.NumberFormat(locale, {
